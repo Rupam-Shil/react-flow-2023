@@ -6,6 +6,7 @@ import ReactFlow, {
 	Controls,
 	Edge,
 	EdgeChange,
+	Node,
 	NodeChange,
 	addEdge,
 	applyEdgeChanges,
@@ -13,19 +14,50 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import Custom1 from './components/Custom1';
+import Node1 from './components/Node1';
 
-const initialNodes = [
+const initialNodes: Node[] = [
 	{
 		id: '1',
 		data: { label: 'Hello' },
 		position: { x: 0, y: 0 },
-		type: 'textUpdater',
+		type: 'group',
+		resizing: true,
+		style: {
+			height: 'max-content',
+			width: 'fit-content',
+		},
 	},
 	{
 		id: '2',
 		data: { label: 'World' },
 		position: { x: 100, y: 100 },
-		type: 'textUpdater',
+		type: 'group',
+		resizing: true,
+	},
+	{
+		id: '4',
+		data: { label: 'm' },
+		position: { x: 0, y: 0 },
+		type: 'node',
+		parentNode: '1',
+		extent: 'parent',
+	},
+	{
+		id: '4a',
+		data: { label: 'asdfasdf' },
+		position: { x: 100, y: 0 },
+		type: 'node',
+		parentNode: '1',
+		extent: 'parent',
+	},
+	{
+		id: '5',
+		data: { label: 'f' },
+		position: { x: 100, y: 100 },
+		type: 'node',
+		parentNode: '2',
+		extent: 'parent',
 	},
 ];
 
@@ -51,7 +83,7 @@ const App = () => {
 		setEdges((eds: Edge[]) => addEdge(params, eds));
 	}, []);
 
-	const nodeTypes = useMemo(() => ({ textUpdater: Custom1 }), []);
+	const nodeTypes = useMemo(() => ({ textUpdater: Custom1, node: Node1 }), []);
 	return (
 		<>
 			<div className="canvas">
