@@ -1,17 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { memo } from 'react';
+import { NodeResizer } from 'reactflow';
 
-function Custom1(props: any) {
-	useEffect(() => {
-		console.log('Custom1', props);
-	}, []);
+function Custom1({ data, selected }: any) {
 	return (
-		<div>
+		<>
+			<NodeResizer
+				color="#ff0071"
+				isVisible={selected}
+				minWidth={100}
+				minHeight={30}
+			/>
 			<div className="dottedBg">
 				<div className="dottedBg-main"></div>
-				<div className="label">{props.data.label}</div>
+				<div className="label">{data.label}</div>
 			</div>
-		</div>
+		</>
 	);
 }
 
-export default Custom1;
+export default memo(Custom1);

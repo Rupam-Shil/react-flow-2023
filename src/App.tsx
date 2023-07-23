@@ -21,18 +21,14 @@ const initialNodes: Node[] = [
 		id: '1',
 		data: { label: 'Hello' },
 		position: { x: 0, y: 0 },
-		type: 'group',
+		type: 'textUpdater',
 		resizing: true,
-		style: {
-			height: 'max-content',
-			width: 'fit-content',
-		},
 	},
 	{
 		id: '2',
 		data: { label: 'World' },
 		position: { x: 100, y: 100 },
-		type: 'group',
+		type: 'textUpdater',
 		resizing: true,
 	},
 	{
